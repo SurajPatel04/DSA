@@ -1,94 +1,42 @@
-# def dublicate(arr):
-#     dict = {}
-#     arr1 = []
-#     for i in arr:
-#         if i not in dict:
-#             dict[i] = True
-#         else:
-#             arr1.append(i)
+class Graph:
+    def __init__(self):
+        self.adj_list = {}
         
-#     return arr1
-
-
-# def tolist(arr1, arr2):
-#     dict = {}
-#     common = []
-#     for i in arr1:
-#         dict[i] = True
-    
-#     for j in arr2:
-#         if j in dict:
-#             common.append(j)
-        
-#     return common
-
-# arr = [1,2,4,5,2,1,2,1]
-# arr2 = [1,2,44,3,4,2,1,10,2,11]
-
-
-# print(tolist(arr,arr2))
-
-# def first_non_repeating_char(string):
-#     my_dict = {}
-#     common = []
-#     notCommon = []
-#     for i in string:
-#         if i not in my_dict:
-#             my_dict[i] = True
-
-#     return my_dict
-
-# print( first_non_repeating_char('leetcode') )
-
-# print( first_non_repeating_char('hello') )
-
-# print( first_non_repeating_char('aabbcc') )
-
-
-
-# """
-#     EXPECTED OUTPUT:
-#     ----------------
-#     l
-#     h
-#     None
-
-# """
-
-
-def has_unique_chars(str):
-    dict = {}
-    hold = []
-    for j in str:
-        if j not in dict:
-            dict[j] = True
-        else:
-            hold.append(j)
-            
-    
-    if len(hold) == 0:
-        return True
-    else:
+    def add_vertes(self, vertex):
+        if vertex not in self.adj_list.keys():
+            self.adj_list[vertex] = []
+            return True
         return False
-        
+    
+    def printGraph(self):
+        if self.adj_list is not None:
+            for v in self.adj_list:
+                print(v, ": ", self.adj_list[v])
+                
+    def add_edges(self, v1, v2):
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
+            self.adj_list[v1].append(v2)
+            self.adj_list[v2].append(v1)
+            return True
+        return False
+    
+    def  remove_edges(self, v1, v2):
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
+            try:
+                self.adj_list[v1].remove(v2)
+                self.adj_list[v1].remove(v2)
 
+graph = Graph()
+graph.add_vertes("A")
+graph.add_vertes("B")
+graph.add_vertes("C")
+graph.add_vertes("D")
+graph.add_vertes("E")
 
+graph.add_edges("A","B")
+graph.add_edges("A","E")
+graph.add_edges("B","C")
+graph.add_edges("D","C")
+graph.add_edges("D","E")
 
-print(has_unique_chars('abcdefg')) # should return True
-print(has_unique_chars('hello')) # should return False
-print(has_unique_chars('')) # should return True
-print(has_unique_chars('0123456789')) # should return True
-print(has_unique_chars('abacadaeaf')) # should return False
-
-
-
-"""
-    EXPECTED OUTPUT:
-    ----------------
-    True
-    False
-    True
-    True
-    False
-
-"""
+graph.printGraph()
