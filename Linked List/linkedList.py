@@ -151,20 +151,73 @@ class LinkedList:
             temp.next = before 
             before = temp
             temp = afetr
+    
+    def sortedinsert(self, value):
+        new_node = Node(value)
+        temp = self.head
+        while temp.value < new_node.value:
+            after = temp
+            temp = temp.next
+            
+            
+        new_node.next = after.next
+        after.next = new_node
+        self.length += 1
+        return True
+    
+    def dubplicate(self):
+        temp = self.head
+        after = temp.next
+        while after is not None:
+            if temp.value == after.value:
+                after = after.next
+                temp.next = after
+            else:
+                temp = after
+                after = temp.next
+            
+        return "Done"
+    
+    def valu(self, val):
+        # If the list is empty, return None
+        if self.head is None:
+            return None
         
+        # Handle the case where the head node itself needs to be removed
+        while self.head is not None and self.head.value == val:
+            self.head = self.head.next  # Move head to the next node
+        
+        temp = self.head
+        
+        # Iterate through the list
+        while temp is not None and temp.next is not None:
+            if temp.next.value == val:
+                # Remove the next node
+                temp.next = temp.next.next
+            else:
+                # Move to the next node
+                temp = temp.next
+
+        return self.head 
+            
+            
+                
+                
         
     
 
                 
 
-li = LinkedList(5)
+li = LinkedList(1)
 li.appendLinkedlist(2)
-li.appendLinkedlist(13)
-li.appendLinkedlist(2)
+li.appendLinkedlist(6)
 li.appendLinkedlist(3)
-li.appendLinkedlist(8)
-
-li.greaterRightRemove()
+li.appendLinkedlist(4)
+li.appendLinkedlist(5)
+li.appendLinkedlist(6)
+li.sortedinsert(0)
+# li.greaterRightRemove()
+li.valu(6)
 print(li.printLinkedList())
 
 

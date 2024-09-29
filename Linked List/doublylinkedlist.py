@@ -168,18 +168,28 @@ class DoublyLinkedList:
             before = temp
             temp.prev = after
             temp = after
+    
+    def sortedinsert(self, value):
+        new_node = Node(value)
+        temp = self.head
+        while temp.next.value < value:
+            temp = temp.next
         
+        temp.next.prev = new_node
+        new_node.next = temp.next
+        temp.next = new_node
+        new_node.prev = temp
+        
+        self.length += 1
 
 l1 = DoublyLinkedList(1)
 l1.append(2)
-l1.append(3)
 l1.append(4)
-l1.append(5)
-l1.append(6)
+l1.sortedinsert(3)
+
 # l1.popFirst()
 # l1.prepend(0)
 # l1.popFirst()
-l1.remove(2)
 l1.printList()
         
             
