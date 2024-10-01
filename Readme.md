@@ -30,6 +30,7 @@ A collection of common array-related problems along with their solutions.
 5. **Pair Sum**: Find pairs in an array whose sum equals a given target.
 6. **Swap Adjacent**: Swap adjacent elements in the array.
 7. **Three Pair Sum**: Find triplets in an array whose sum equals a given target.
+8. **Majority Element**: Find majority Element in an array
 
 ---
 
@@ -96,10 +97,3 @@ Solve common search-related problems with optimized approaches:
 ## Tree
 
 1. **Binary Search Tree**
-
-## Getting Started
-
-Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/repository-name.git
-   cd repository-name

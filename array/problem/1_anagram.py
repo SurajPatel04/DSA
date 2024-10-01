@@ -10,6 +10,8 @@ def anagram(str1, str2):
         else:
             dict[i] = 1
     
+    print(dict)
+    
     for i in li2:
         if i not in dict:
             return False
