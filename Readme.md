@@ -31,6 +31,8 @@ A collection of common array-related problems along with their solutions.
 6. **Swap Adjacent**: Swap adjacent elements in the array.
 7. **Three Pair Sum**: Find triplets in an array whose sum equals a given target.
 8. **Majority Element**: Find majority Element in an array
+9. **BuyAndSell**: Find largest Profit
+10. **FindDublicateInt**: There is two ways to solve one is Hash and another is Floyd's Cycle Detection 
 
 ---
 
