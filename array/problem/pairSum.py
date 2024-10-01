@@ -13,7 +13,6 @@ def pairSum(arr, sum):
 def pair(arr,sum):
     result = []
     seen = set()
-    
     for i in arr:
         complement = sum - i
         if complement in seen:
@@ -27,5 +26,5 @@ def pair(arr,sum):
 
 arr = [1,2,3,4,5]
 sum = 5
-# print(pairSum(arr,sum))
+print(pairSum(arr,sum))
 print(pair(arr,sum))
