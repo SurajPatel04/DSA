@@ -9,4 +9,4 @@ def linearSearch(arr, find):
 
 arr = [1,2,3,4,5,11,10]
 print(linearSearch(arr,2))
-print(linearSearch(arr,111))
+print(linparSearch(arr,111))
