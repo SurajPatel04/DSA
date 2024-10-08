@@ -1,16 +1,16 @@
 def pairSum(arr, sum):
     result = []
     for i in range(len(arr)):
-        for j in range(i, len(arr)):
+        for j in range(i,len(arr)):
             if arr[i] + arr[j] == sum:
-                result.append(min(arr[i], arr[j]))
-                result.append(max(arr[i], arr[j]))
-
+                result.append(min(arr[i],arr[j]))
+                result.append(max(arr[i],arr[j]))
+            
     return result
 
 
 # Time Complexity O(n)
-def pair(arr, sum):
+def pair(arr,sum):
     result = []
     seen = set()
     for i in arr:
@@ -19,21 +19,20 @@ def pair(arr, sum):
             result.append(complement)
             result.append(i)
         seen.add(i)
-
+        
     return result
-
-
-def pairIndex(nums, target):
+            
+def pairIndex(nums,target):
+    result = []
     seen = {}
     for i in range(len(nums)):
-        commplement = target - nums[i]
+        commplement = target -nums[i]
         if commplement in seen:
             return [seen[commplement], i]
         seen[nums[i]] = i
     return []
 
-
-arr = [1, 2, 3, 4, 5]
+arr = [1,2,3,4,5]
 sum = 5
-print(pairSum(arr, sum))
-print(pair(arr, sum))
+print(pairSum(arr,sum))
+print(pair(arr,sum))

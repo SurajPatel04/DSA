@@ -1,76 +1,124 @@
-class MaxHeap:
-    def __init__(self):
-        self.heap = []
-        
-    def left_child(self,index):
-        return 2 * index +1
-    
-    def right_child(self, index):
-        return 2* index + 2
-    
-    def parent(self, index):
-        return (index -1) // 2
-    
-    def swap(self, index1, index2):
-        self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
-    
-    def insert(self, value):
-        self.heap.append(value)
-        
-        current = len(self.heap) -1 
-        
-        while current > 0 and self.heap[current] > self.heap[self.parent(current)]:
-            self.swap(current, self.parent(current))
-            current = self.parent(current)
-            
-            
-    def sink_down(self,index):
-        max_index = index
-        right_child = self.right_child(max_index)
-        left_child = self.left_child(max_index)
-        if left_child < len(self.heap) and self.heap[max_index] < self.heap[left_child]:
-            max_index = left_child
-        if right_child < len(self.heap) and self.heap[max_index] < self.heap[right_child]:
-            max_index = right_child
-            
-        if max_index != index:
-            self.swap(max_index,index)
-            self.sink_down(max_index)
-    
-    def remove(self):
-        if self.heap is None:
-            return None
-        
-        if len(self.heap) == 1:
-            return self.heap.pop()
-        
-        max_value = self.heap[0]
-        self.heap[0] = self.heap.pop()
-        
-        self.sink_down(0)
-        
-        return max_value
-    
-    
-    def heapify(self, arr):
-        self.heap = arr
-        for i in range(len(arr)//2-1, -1 , -1):
-            self.sink_down(i)
-            
-    
-            
-heap = MaxHeap()   
-# heap.insert(95)
-# heap.insert(75)
-# heap.insert(80)
-# heap.insert(55)
+def anagram(arr1, arr2):
+    if len(arr1) != len(arr2):
+        return False
+    my_dict = {}
+    for i in arr1:
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
 
-# heap.insert(60)
+    for i in arr2:
+        if i not in my_dict:
+            return False
+        my_dict[i] -= 1
+        if my_dict[i] < 0:
+            return False
 
-# heap.insert(50)
-# heap.remove()
+    return True
 
-arr = [54,53,55,52,50]
 
-heap.heapify(arr)
-print(heap.heap)
+# print(anagram("listen","silent"))
+# print(anagram("dad","bad"))
+
+
+def commonElement(arr1, arr2):
+    result = []
+    dict = {}
+    for i in arr1:
+        if i in dict:
+            dict[i] += 1
+        else:
+            dict[i] = 1
+
+    for i in arr2:
+        if i in dict:
+            result.append(i)
+        dict[i] -= 1
+
+    return result
+
+
+print(commonElement([1, 2, 2, 3, 3, 3], [1, 2, 2, 3, 3]))
+
+
+def MaximumSubArray(arr):
+    currentSum = 0
+    maxSum = float("-inf")
+    for i in range(len(arr)):
+        currentSum = currentSum + arr[i]
+        if currentSum > maxSum:
+            maxSum = currentSum
+
+        if currentSum < 0:
+            currentSum = 0
+
+    return maxSum
+
+
+print(MaximumSubArray([2, 3, -8, 7, -1, 2, 3]))
+print(MaximumSubArray([-2, -4]))
+print(MaximumSubArray([5, 4, 1, 7, 8]))
+
+
+def swap(nums):
+    for i in range(len(nums) // 2):
+        temp = nums[i * 2]
+        nums[i * 2] = nums[(i * 2) + 1]
+        nums[(i * 2) + 1] = temp
+
+    return nums
+
+
+print(swap([1, 2, 7, 8, 5]))
+print(swap([1, 2, 7, 8, 5, 6]))
+
+
+def MajorityElement(arr1):
+    dict = {}
+    result = 0
+    for i in arr1:
+        if i in dict:
+            dict[i] += 1
+        else:
+            dict[i] = 1
+
+    result = max(dict, key=dict.get)
+    return result
+
+
+print(MajorityElement([1, 2, 2, 2, 3, 3]))
+
+
+def buyAndSell(arr):
+    sell = 0
+    buy = float("inf")
+    hold = 0
+    for i in range(len(arr)):
+        if arr[i] < buy:
+            buy = arr[i]
+        hold = arr[i] - buy
+
+        sell = max(sell, hold)
+    return sell
+
+
+print(buyAndSell([7, 1, 5, 3, 6, 4]))
+
+
+def topKelement(arr, k):
+    my_dict = {}
+    result = []
+    for i in arr:
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    for i in range(k):
+        result.append(max(my_dict, key=my_dict.get))
+        del my_dict[max(my_dict, key=my_dict.get)]
+
+    return result
+
+
+print(topKelement([1, 1, 1, 2, 2, 3], 2))

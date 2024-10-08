@@ -1,14 +1,18 @@
 def first_non_repeating_char(string):
     my_dict = {}
-    hold = []
+    hold = ""
     dublicate = []
     for i in string:
-        if i not in my_dict:
-            my_dict[i] = i
-            
-            hold.append(i)
-    
-    return hold
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+
+    for i in string:
+        if my_dict[i] == 1:
+            return i
+        
+    return None
 
 
 print( first_non_repeating_char('leetcode') )
